@@ -1,37 +1,33 @@
-'use client'
+"use client";
 
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider } from "@chakra-ui/react";
 
-import '@rainbow-me/rainbowkit/styles.css';
+import "@rainbow-me/rainbowkit/styles.css";
 
-import {
-  getDefaultWallets,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import {
-  hardhat
-} from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { hardhat } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
 
 const { chains, publicClient } = configureChains(
-  [hardhat],
+  [sepolia, hardhat],
   [
-    publicProvider()
+    alchemyProvider({ apiKey: "45vXfTKFhGaf0bjXD2swWvStqZSXCSMX" }),
+    publicProvider(),
   ]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
-  projectId: 'a82c5eec414267ad0ed76d7282976d96',
-  chains
+  appName: "Bank-wagmi-hooks",
+  projectId: "ecec9db6a9904ec5f449aae1e0dc97b7",
+  chains,
 });
 
 const wagmiConfig = createConfig({
   autoConnect: false,
   connectors,
-  publicClient
-})
+  publicClient,
+});
 
 export default function RootLayout({ children }) {
   return (
@@ -39,12 +35,10 @@ export default function RootLayout({ children }) {
       <body>
         <ChakraProvider>
           <WagmiConfig config={wagmiConfig}>
-            <RainbowKitProvider chains={chains}>
-              {children}
-            </RainbowKitProvider>
+            <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
           </WagmiConfig>
         </ChakraProvider>
       </body>
     </html>
-  )
+  );
 }
