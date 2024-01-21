@@ -1,0 +1,70 @@
+/* globals.css */
+
+.bank-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black background */
+  border-radius: 15px;
+  /* Rounded borders */
+  padding: 20px;
+  box-sizing: border-box;
+  width: fit-content;
+  /* Fits the content width */
+}
+
+.bank-container-flex {
+  background: rgb(14, 28, 55);
+  display: inline-block;
+}
+
+.bank-container-flex-flex {
+  margin-left: auto;
+ }
+
+.bank-container-heading,
+.bank-container-text {
+  
+  /* Translucent background for headings */
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 20px;
+  /* Spacing between the heading and the amount */
+  
+  /* Aligns the heading with the amount */
+  width: 50%;
+}
+
+.bank-container-text {
+   text-align: right;
+ }
+
+/* For the Flex container holding the input and button side by side */
+.deposit-withdraw-container {
+  align-items: center;
+  /* Centers items vertically within the container */
+}
+
+/* For individual input and button alignment */
+.input-button-group {
+  display: flex;
+  gap: 10px;
+  /* Spacing between the input and the button */
+}
+
+.event-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* For the text and button in Deposit and Withdraw sections */
+.deposit,
+.withdraw {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  /* Adjust the space as needed */
+}
